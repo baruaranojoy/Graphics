@@ -1,0 +1,85 @@
+/*
+ About author: 
+@Ranojoy_Barua 
+ * */
+
+package graphics;
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import java.util.*;
+
+public class assignment_1 extends Applet implements ActionListener {
+	
+	int total_height = 600, total_width = 600, height = 50, width = 50;
+	Button button_plus, button_minus;
+	Graphics g;
+	int high_row = 2, high_col = 5;
+	
+	public void init() {
+		button_plus = new Button();
+		button_plus.setLabel("Increase");
+		
+		button_minus = new Button();
+		button_minus.setLabel("Decreses");
+		
+		add(button_plus);
+		add(button_minus);
+		
+		button_plus.addActionListener(this);
+		button_minus.addActionListener(this);
+		
+		//Scanner in = new Scanner(System.in);
+		//high_row = in.nextInt();
+		//high_col = in.nextInt();
+	}
+
+	public void paint(Graphics g)
+	{
+		
+		
+		setSize(new Dimension(total_height, total_width));
+		
+		Color mycolor1=new Color(0,0,0);
+		setBackground(mycolor1); 
+		
+		Color mycolor2 = new Color(200,200,200);
+		g.setColor(mycolor2);
+		
+		
+		for (int k = 0 ; k <= total_width; k = k + width) {
+			g.drawLine(k, 0, k, total_height);
+			g.drawLine(0, k, total_width, k);
+		}
+		
+		g.setColor(Color.RED);
+		g.fillRect(high_row * width, high_col * width, width, width);
+		
+		
+		
+    }
+	
+	
+
+	@Override
+	public void actionPerformed(ActionEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		if (arg0.getSource() == button_plus) {
+			System.out.println("Button 1 was pressed");
+			width = width + 5;
+			System.out.println(width);
+			
+		}
+		else {
+			System.out.println("Button 2 was pressed");
+			width = width - 5;
+			System.out.println(width);
+		}
+		
+		repaint();
+	}
+	
+}
